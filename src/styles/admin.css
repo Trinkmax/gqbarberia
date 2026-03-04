@@ -1,0 +1,931 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Admin Panel — Mónaco Barber Studio
+   Mobile-first design with premium dark aesthetics
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Variables ──────────────────────────────────────────────────────────── */
+:root {
+    --admin-bg: #06080a;
+    --admin-surface: #0d1117;
+    --admin-surface-2: #151b25;
+    --admin-surface-hover: #1a2233;
+    --admin-border: rgba(255, 255, 255, 0.07);
+    --admin-border-hover: rgba(255, 255, 255, 0.14);
+    --admin-text: #e6edf3;
+    --admin-text-secondary: #8b949e;
+    --admin-text-muted: #484f58;
+    --admin-accent: #c9d1d9;
+    --admin-gold: #d4a853;
+    --admin-gold-light: #e8c97a;
+
+    /* Status Colors */
+    --status-completado: #2ea043;
+    --status-completado-bg: rgba(46, 160, 67, 0.12);
+    --status-en-curso: #d29922;
+    --status-en-curso-bg: rgba(210, 153, 34, 0.12);
+    --status-pendiente: #58a6ff;
+    --status-pendiente-bg: rgba(88, 166, 255, 0.12);
+    --status-cancelado: #f85149;
+    --status-cancelado-bg: rgba(248, 81, 73, 0.12);
+
+    --admin-radius: 14px;
+    --admin-radius-sm: 10px;
+    --admin-radius-lg: 20px;
+    --admin-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Page Layout ───────────────────────────────────────────────────────── */
+.admin-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: var(--admin-bg);
+    padding: 0 16px 32px;
+    max-width: 600px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────── */
+.admin-header {
+    padding: 20px 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--admin-bg);
+    border-bottom: 1px solid var(--admin-border);
+    margin-bottom: 20px;
+}
+
+.admin-header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -16px;
+    right: -16px;
+    height: 20px;
+    background: linear-gradient(to bottom, var(--admin-bg), transparent);
+    pointer-events: none;
+}
+
+.admin-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.admin-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.admin-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--admin-text);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.admin-subtitle {
+    font-size: 0.78rem;
+    color: var(--admin-text-secondary);
+    font-weight: 400;
+    margin-top: 1px;
+}
+
+.admin-header-time {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--admin-text);
+    background: var(--admin-surface);
+    padding: 8px 14px;
+    border-radius: 50px;
+    border: 1px solid var(--admin-border);
+}
+
+.admin-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--status-completado);
+    animation: adminPulse 2s ease-in-out infinite;
+}
+
+@keyframes adminPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+/* ── Barber Selector ───────────────────────────────────────────────────── */
+.admin-barber-selector {
+    position: relative;
+}
+
+.admin-selector-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    color: var(--admin-text);
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--admin-transition);
+}
+
+.admin-selector-trigger:hover,
+.admin-selector-trigger.open {
+    border-color: var(--admin-border-hover);
+    background: var(--admin-surface-2);
+}
+
+.admin-selector-trigger svg {
+    margin-left: auto;
+    color: var(--admin-text-muted);
+    transition: var(--admin-transition);
+    flex-shrink: 0;
+}
+
+.admin-selector-trigger.open svg {
+    transform: rotate(180deg);
+}
+
+.admin-selector-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--admin-surface-2);
+    border: 2px solid var(--admin-border-hover);
+}
+
+.admin-selector-avatar.small {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border-width: 1px;
+}
+
+.admin-selector-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-selector-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1px;
+}
+
+.admin-selector-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.admin-selector-role {
+    font-size: 0.75rem;
+    color: var(--admin-text-secondary);
+}
+
+.admin-selector-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border-hover);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+    z-index: 200;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    animation: adminSlideDown 0.2s ease-out;
+}
+
+@keyframes adminSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-selector-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--admin-border);
+    color: var(--admin-text);
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--admin-transition);
+}
+
+.admin-selector-option:last-child {
+    border-bottom: none;
+}
+
+.admin-selector-option:hover {
+    background: var(--admin-surface-hover);
+}
+
+.admin-selector-option.active {
+    background: rgba(212, 168, 83, 0.06);
+}
+
+.admin-selector-option-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1px;
+}
+
+.admin-selector-option-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.admin-selector-option-role {
+    font-size: 0.72rem;
+    color: var(--admin-text-secondary);
+}
+
+.admin-check {
+    margin-left: auto;
+    color: var(--admin-gold);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* ── Stats Cards ───────────────────────────────────────────────────────── */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.admin-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    transition: var(--admin-transition);
+}
+
+.admin-stat-card:hover {
+    border-color: var(--admin-border-hover);
+    transform: translateY(-1px);
+}
+
+.admin-stat-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.admin-stat-icon.completado {
+    background: var(--status-pendiente-bg);
+    color: var(--status-pendiente);
+}
+
+.admin-stat-icon.en-curso {
+    background: var(--status-en-curso-bg);
+    color: var(--status-en-curso);
+}
+
+.admin-stat-icon.pendiente {
+    background: var(--status-pendiente-bg);
+    color: var(--status-pendiente);
+}
+
+.admin-stat-icon.ingreso {
+    background: rgba(46, 160, 67, 0.12);
+    color: var(--status-completado);
+}
+
+.admin-stat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.admin-stat-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--admin-text);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.admin-stat-label {
+    font-size: 0.7rem;
+    color: var(--admin-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+/* ── Timeline Progress ─────────────────────────────────────────────────── */
+.admin-timeline-progress {
+    margin-bottom: 16px;
+    padding: 14px 16px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+}
+
+.admin-timeline-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.admin-timeline-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--admin-gold), var(--admin-gold-light));
+    border-radius: 3px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.admin-timeline-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: adminShimmer 2s infinite;
+}
+
+@keyframes adminShimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.admin-timeline-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: var(--admin-text-secondary);
+}
+
+/* ── Next / Current Turno ──────────────────────────────────────────────── */
+.admin-next-turno {
+    margin-bottom: 16px;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.08) 0%, rgba(212, 168, 83, 0.02) 100%);
+    border: 1px solid rgba(212, 168, 83, 0.2);
+    border-radius: var(--admin-radius);
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-next-turno::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--admin-gold), var(--admin-gold-light));
+    border-radius: 3px;
+}
+
+.admin-next-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--admin-gold);
+    margin-bottom: 12px;
+}
+
+.admin-next-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--admin-gold);
+    animation: adminPulse 1.5s ease-in-out infinite;
+}
+
+.admin-next-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-next-time {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--admin-text);
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+}
+
+.admin-next-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-next-cliente {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--admin-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-next-servicio {
+    font-size: 0.78rem;
+    color: var(--admin-text-secondary);
+}
+
+.admin-next-precio {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--admin-gold);
+    flex-shrink: 0;
+}
+
+/* ── Filtros ───────────────────────────────────────────────────────────── */
+.admin-filtros {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.admin-filtros::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-filtro-btn {
+    padding: 8px 16px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 50px;
+    color: var(--admin-text-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: inherit;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: var(--admin-transition);
+}
+
+.admin-filtro-btn:hover {
+    border-color: var(--admin-border-hover);
+    color: var(--admin-text);
+}
+
+.admin-filtro-btn.active {
+    background: rgba(212, 168, 83, 0.12);
+    border-color: rgba(212, 168, 83, 0.3);
+    color: var(--admin-gold);
+}
+
+/* ── Turno Cards ───────────────────────────────────────────────────────── */
+.admin-turnos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.admin-turno-card {
+    display: flex;
+    gap: 14px;
+    padding: 16px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    transition: var(--admin-transition);
+    position: relative;
+}
+
+.admin-turno-card:hover {
+    border-color: var(--admin-border-hover);
+    background: var(--admin-surface-2);
+}
+
+.admin-turno-card.completado {
+    opacity: 0.6;
+}
+
+.admin-turno-card.completado:hover {
+    opacity: 0.85;
+}
+
+.admin-turno-card.en-curso {
+    border-color: rgba(210, 153, 34, 0.25);
+    background: linear-gradient(135deg, var(--admin-surface) 0%, rgba(210, 153, 34, 0.04) 100%);
+}
+
+.admin-turno-time-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.admin-turno-hora {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--admin-text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+
+.admin-turno-duracion {
+    font-size: 0.65rem;
+    color: var(--admin-text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.admin-turno-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-turno-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.admin-turno-cliente {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--admin-text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-turno-cliente svg {
+    flex-shrink: 0;
+    color: var(--admin-text-muted);
+}
+
+.admin-turno-estado {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 50px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.admin-estado-dot {
+    font-size: 0.55rem;
+    line-height: 1;
+}
+
+.status-completado {
+    background: var(--status-completado-bg);
+    color: var(--status-completado);
+}
+
+.status-en-curso {
+    background: var(--status-en-curso-bg);
+    color: var(--status-en-curso);
+}
+
+.status-pendiente {
+    background: var(--status-pendiente-bg);
+    color: var(--status-pendiente);
+}
+
+.status-cancelado {
+    background: var(--status-cancelado-bg);
+    color: var(--status-cancelado);
+}
+
+.admin-turno-servicio {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--admin-text-secondary);
+    margin-bottom: 10px;
+}
+
+.admin-turno-servicio svg {
+    flex-shrink: 0;
+    color: var(--admin-text-muted);
+}
+
+.admin-turno-precio {
+    margin-left: auto;
+    font-weight: 700;
+    color: var(--admin-text);
+    font-size: 0.85rem;
+}
+
+.admin-turno-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-turno-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--admin-transition);
+}
+
+.admin-turno-btn.whatsapp {
+    background: rgba(37, 211, 102, 0.1);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.15);
+}
+
+.admin-turno-btn.whatsapp:hover {
+    background: rgba(37, 211, 102, 0.2);
+    border-color: rgba(37, 211, 102, 0.3);
+}
+
+.admin-turno-btn.phone {
+    background: rgba(88, 166, 255, 0.1);
+    color: var(--status-pendiente);
+    border: 1px solid rgba(88, 166, 255, 0.15);
+}
+
+.admin-turno-btn.phone:hover {
+    background: rgba(88, 166, 255, 0.2);
+    border-color: rgba(88, 166, 255, 0.3);
+}
+
+/* ── Empty State ───────────────────────────────────────────────────────── */
+.admin-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 48px 24px;
+    color: var(--admin-text-muted);
+    text-align: center;
+}
+
+.admin-empty-state svg {
+    width: 40px;
+    height: 40px;
+    opacity: 0.4;
+}
+
+.admin-empty-state p {
+    font-size: 0.9rem;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────── */
+.admin-footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--admin-border);
+}
+
+.admin-footer p {
+    font-size: 0.72rem;
+    color: var(--admin-text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablet & Desktop enhancements
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (min-width: 480px) {
+    .admin-page {
+        padding: 0 24px 40px;
+    }
+
+    .admin-stats {
+        gap: 12px;
+    }
+
+    .admin-stat-card {
+        padding: 16px;
+    }
+
+    .admin-stat-value {
+        font-size: 1.3rem;
+    }
+
+    .admin-turno-btn {
+        padding: 7px 14px;
+        font-size: 0.76rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .admin-page {
+        max-width: 720px;
+        padding: 0 32px 48px;
+    }
+
+    .admin-header {
+        padding: 28px 0 20px;
+    }
+
+    .admin-title {
+        font-size: 1.35rem;
+    }
+
+    .admin-stats {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+    }
+
+    .admin-stat-card {
+        padding: 18px;
+    }
+
+    .admin-next-turno {
+        padding: 20px 24px;
+    }
+
+    .admin-next-time {
+        font-size: 1.8rem;
+    }
+
+    .admin-turno-card {
+        padding: 18px 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .admin-page {
+        max-width: 800px;
+    }
+
+    .admin-turno-card:hover {
+        transform: translateX(4px);
+    }
+
+    .admin-stat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* ── Animations ────────────────────────────────────────────────────────── */
+.admin-turno-card {
+    animation: adminCardIn 0.3s ease-out both;
+}
+
+.admin-turno-card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.admin-turno-card:nth-child(2) {
+    animation-delay: 0.04s;
+}
+
+.admin-turno-card:nth-child(3) {
+    animation-delay: 0.08s;
+}
+
+.admin-turno-card:nth-child(4) {
+    animation-delay: 0.12s;
+}
+
+.admin-turno-card:nth-child(5) {
+    animation-delay: 0.16s;
+}
+
+.admin-turno-card:nth-child(6) {
+    animation-delay: 0.20s;
+}
+
+.admin-turno-card:nth-child(7) {
+    animation-delay: 0.24s;
+}
+
+.admin-turno-card:nth-child(8) {
+    animation-delay: 0.28s;
+}
+
+@keyframes adminCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-stat-card {
+    animation: adminCardIn 0.35s ease-out both;
+}
+
+.admin-stat-card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.admin-stat-card:nth-child(2) {
+    animation-delay: 0.06s;
+}
+
+.admin-stat-card:nth-child(3) {
+    animation-delay: 0.12s;
+}
+
+.admin-stat-card:nth-child(4) {
+    animation-delay: 0.18s;
+}
+
+/* Safe Area Support (iOS) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .admin-page {
+        padding-bottom: calc(32px + env(safe-area-inset-bottom));
+    }
+
+    .admin-header {
+        padding-top: calc(20px + env(safe-area-inset-top));
+    }
+}

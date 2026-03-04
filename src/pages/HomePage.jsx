@@ -46,12 +46,12 @@ const services = [
 ]
 
 const barbers = [
-    { name: 'Barbero 1', role: 'Barbero Senior', specialty: 'Fades & Diseño' },
-    { name: 'Barbero 2', role: 'Barbero Senior', specialty: 'Cortes Clásicos' },
-    { name: 'Barbero 3', role: 'Barbero', specialty: 'Barba & Afeitado' },
-    { name: 'Barbero 4', role: 'Barbero', specialty: 'Mullets & Modernos' },
-    { name: 'Barbero 5', role: 'Barbero', specialty: 'Tratamientos Capilares' },
-    { name: 'Barbero 6', role: 'Barbero', specialty: 'Tratamientos Faciales' },
+    { name: 'Alejandro', role: 'Barbero Senior', specialty: 'Fades & Diseño', photo: '/assets/barbers/optimized/Alejandro.webp' },
+    { name: 'Bianchi', role: 'Barbero Senior', specialty: 'Cortes Clásicos', photo: '/assets/barbers/optimized/Bianchi.webp' },
+    { name: 'Fede', role: 'Barbero', specialty: 'Barba & Afeitado', photo: '/assets/barbers/optimized/Fede.webp' },
+    { name: 'Nahuel', role: 'Barbero', specialty: 'Mullets & Modernos', photo: '/assets/barbers/optimized/Nahuel.webp' },
+    { name: 'Nico', role: 'Barbero', specialty: 'Tratamientos Capilares', photo: '/assets/barbers/optimized/Nico.webp' },
+    { name: 'Pulcro', role: 'Barbero', specialty: 'Tratamientos Faciales', photo: '/assets/barbers/optimized/Pulcro.webp' },
 ]
 
 const scrollToSection = (id) => {
@@ -121,7 +121,7 @@ export default function HomePage() {
                 </div>
                 <div className="hero-image-container">
                     <div className="hero-image-wrapper">
-<img src="/assets/exterior-monaco.jpg" alt="Mónaco Barber Studio Interior" className="hero-image" />
+                        <img src="/assets/exterior-monaco.jpg" alt="Mónaco Barber Studio Interior" className="hero-image" />
                         <div className="floating-card card-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
                             <span>5 ★ en Google</span>
@@ -139,7 +139,7 @@ export default function HomePage() {
                 <div className="container">
                     <div className="about-content">
                         <div className="about-image">
-<img src="/assets/corte-monaco.webp" alt="Mónaco Barber Studio - Equipo Profesional" />
+                            <img src="/assets/corte-monaco.webp" alt="Mónaco Barber Studio - Equipo Profesional" />
                             <div className="about-badge">
                                 <span className="badge-name">Mónaco</span>
                                 <span className="badge-role">Barber Studio</span>
@@ -182,7 +182,7 @@ export default function HomePage() {
                         {barbers.map((barber, i) => (
                             <div key={i} className="team-card">
                                 <div className="team-avatar">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                                    <img src={barber.photo} alt={barber.name} loading="lazy" />
                                 </div>
                                 <h4 className="team-name">{barber.name}</h4>
                                 <span className="team-role">{barber.role}</span>

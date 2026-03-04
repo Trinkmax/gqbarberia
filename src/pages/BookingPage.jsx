@@ -2,9 +2,20 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 
-const PHONE = '5493517468957'
+const SUCURSALES = [
+    {
+        id: 'monaco-3',
+        name: 'Mónaco 3 – Rondeau 30',
+        phoneWa: '5493517482277',
+    },
+    {
+        id: 'monaco-parana',
+        name: 'Mónaco – Paraná 419',
+        phoneWa: '5493517691830',
+    }
+]
 
-// Servicios con iconos y descripciones - PRECIOS ACTUALIZADOS
+// Servicios ampliados
 const services = [
     {
         id: 'corte-clasico',
@@ -32,18 +43,34 @@ const services = [
         icon: 'beard'
     },
     {
-        id: 'afeitado-clasico',
-        name: 'Afeitado Clásico',
-        description: 'Afeitado tradicional con navaja, toalla caliente y productos premium.',
+        id: 'tratamiento-facial',
+        name: 'Tratamiento Facial',
+        description: 'Limpieza facial profunda con productos premium.',
+        duration: 40,
+        price: 12000,
+        icon: 'facial'
+    },
+    {
+        id: 'masaje-capilar',
+        name: 'Masaje Capilar',
+        description: 'Masaje terapéutico capilar que estimula el crecimiento y relaja.',
+        duration: 20,
+        price: 7000,
+        icon: 'massage'
+    },
+    {
+        id: 'tratamiento-capilar',
+        name: 'Tratamiento Capilar',
+        description: 'Tratamiento especializado para revitalizar y fortalecer tu cabello.',
         duration: 35,
         price: 10000,
-        icon: 'razor'
+        icon: 'treatment'
     },
 ]
 
-// Horarios actualizados: 10:00 a 20:00
+// Horarios actualizados: 10:00 a 21:00
 const morningSlots = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30']
-const afternoonSlots = ['14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30']
+const afternoonSlots = ['14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30']
 const allSlots = [...morningSlots, ...afternoonSlots]
 
 const MONTHS_ES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
@@ -73,6 +100,30 @@ const ServiceIcon = ({ type }) => {
                 <path d="M12 14v7" />
             </svg>
         ),
+        facial: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                <line x1="9" y1="9" x2="9.01" y2="9" />
+                <line x1="15" y1="9" x2="15.01" y2="9" />
+            </svg>
+        ),
+        massage: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18.36 6.64a9 9 0 1 1-12.73 0" />
+                <line x1="12" y1="2" x2="12" y2="12" />
+            </svg>
+        ),
+        treatment: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 2v4" />
+                <path d="M16 2v4" />
+                <path d="M12 2v4" />
+                <path d="M3 10h18" />
+                <path d="M5 6h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+                <path d="M9 14l2 2 4-4" />
+            </svg>
+        ),
         razor: (
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M6 3v18" />
@@ -88,6 +139,7 @@ const ServiceIcon = ({ type }) => {
 
 export default function BookingPage() {
     const [currentStep, setCurrentStep] = useState(1)
+    const [selectedSucursal, setSelectedSucursal] = useState(null)
     const [selectedService, setSelectedService] = useState(null)
     const [selectedDate, setSelectedDate] = useState(null)
     const [selectedTime, setSelectedTime] = useState(null)
@@ -140,9 +192,7 @@ export default function BookingPage() {
 
     const availableSlots = useMemo(() => {
         if (!selectedDate) return { morning: [], afternoon: [] }
-        const dayOfWeek = selectedDate.getDay()
-        const isSaturday = dayOfWeek === 6
-        const maxHour = isSaturday ? 18 : 20
+        const maxHour = 21
 
         // Simular disponibilidad random basada en la fecha
         const seed = selectedDate.getDate() + selectedDate.getMonth()
@@ -150,7 +200,6 @@ export default function BookingPage() {
         const filterSlots = (slots) => slots.filter(slot => {
             const hour = parseInt(slot.split(':')[0])
             if (hour >= maxHour) return false
-            // Simular disponibilidad random
             return ((hour * 7 + seed) % 3) !== 0
         })
 
@@ -160,11 +209,15 @@ export default function BookingPage() {
         }
     }, [selectedDate])
 
+    const totalSteps = 5 // sucursal, servicio, fecha, datos, confirmar
+    const stepLabels = ['Sucursal', 'Servicio', 'Fecha', 'Datos', 'Confirmar']
+
     const handleNext = () => {
-        if (currentStep === 1 && !selectedService) return alert('Seleccioná un servicio')
-        if (currentStep === 2 && (!selectedDate || !selectedTime)) return alert('Seleccioná fecha y horario')
-        if (currentStep === 3 && (!formData.name || !formData.phone)) return alert('Completá tus datos')
-        if (currentStep < 4) setCurrentStep(currentStep + 1)
+        if (currentStep === 1 && !selectedSucursal) return alert('Seleccioná una sucursal')
+        if (currentStep === 2 && !selectedService) return alert('Seleccioná un servicio')
+        if (currentStep === 3 && (!selectedDate || !selectedTime)) return alert('Seleccioná fecha y horario')
+        if (currentStep === 4 && (!formData.name || !formData.phone)) return alert('Completá tus datos')
+        if (currentStep < totalSteps) setCurrentStep(currentStep + 1)
     }
 
     const handlePrev = () => {
@@ -173,13 +226,13 @@ export default function BookingPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // Generar mensaje de WhatsApp
         const service = services.find(s => s.id === selectedService)
+        const sucursal = SUCURSALES.find(s => s.id === selectedSucursal)
         const dateStr = selectedDate.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' })
         const priceStr = formatPrice(service.price)
 
         const message = encodeURIComponent(
-            `Hola! 👋 Quiero reservar un turno en GQ Barbería
+            `Hola! 👋 Quiero reservar un turno en ${sucursal.name}
 
 ✂️ *Servicio:* ${service.name}
 💰 *Precio:* ${priceStr}
@@ -192,7 +245,7 @@ export default function BookingPage() {
 
 Espero confirmación. Gracias! 🙌`
         )
-        window.open(`https://wa.me/${PHONE}?text=${message}`, '_blank')
+        window.open(`https://wa.me/${sucursal.phoneWa}?text=${message}`, '_blank')
         setShowModal(true)
     }
 
@@ -208,7 +261,7 @@ Espero confirmación. Gracias! 🙌`
                     <div className="booking-hero-content">
                         <span className="section-badge">Reserva Online</span>
                         <h1 className="section-title">Reservá Tu <span className="gold">Turno</span></h1>
-                        <p className="section-subtitle">Seleccioná el servicio, fecha y horario que mejor te convenga</p>
+                        <p className="section-subtitle">Elegí la sucursal, servicio, fecha y horario que mejor te convenga</p>
 
                         {/* Horarios del local */}
                         <div className="schedule-info">
@@ -217,7 +270,7 @@ Espero confirmación. Gracias! 🙌`
                                     <circle cx="12" cy="12" r="10" />
                                     <polyline points="12 6 12 12 16 14" />
                                 </svg>
-                                <span>Lun - Sáb: 10:00 a 20:00 hs</span>
+                                <span>Lun - Sáb: 10:00 a 21:00 hs</span>
                             </div>
                         </div>
                     </div>
@@ -229,20 +282,49 @@ Espero confirmación. Gracias! 🙌`
                     <div className="booking-container">
                         {/* Steps */}
                         <div className="booking-steps">
-                            {[1, 2, 3, 4].map(step => (
+                            {[1, 2, 3, 4, 5].map(step => (
                                 <div key={step}>
                                     <div className={`step ${currentStep === step ? 'active' : ''} ${currentStep > step ? 'completed' : ''}`}>
                                         <div className="step-number">{currentStep > step ? '✓' : step}</div>
-                                        <span className="step-text">{['Servicio', 'Fecha', 'Datos', 'Confirmar'][step - 1]}</span>
+                                        <span className="step-text">{stepLabels[step - 1]}</span>
                                     </div>
-                                    {step < 4 && <div className="step-line"></div>}
+                                    {step < totalSteps && <div className="step-line"></div>}
                                 </div>
                             )).reduce((acc, curr, i) => i === 0 ? [curr] : [...acc, <div key={`line-${i}`} className="step-line"></div>, curr], [])}
                         </div>
 
                         <form className="booking-form" onSubmit={handleSubmit}>
-                            {/* Step 1: Service Selection */}
+                            {/* Step 1: Sucursal Selection */}
                             {currentStep === 1 && (
+                                <div className="form-step active">
+                                    <h3 className="form-step-title">Elegí la sucursal</h3>
+                                    <div className="sucursal-selection-grid">
+                                        {SUCURSALES.map(sucursal => (
+                                            <label key={sucursal.id} className="sucursal-card-option">
+                                                <input
+                                                    type="radio"
+                                                    name="sucursal"
+                                                    value={sucursal.id}
+                                                    checked={selectedSucursal === sucursal.id}
+                                                    onChange={() => setSelectedSucursal(sucursal.id)}
+                                                />
+                                                <div className="sucursal-card-content">
+                                                    <div className="sucursal-card-icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                                            <circle cx="12" cy="10" r="3" />
+                                                        </svg>
+                                                    </div>
+                                                    <h4 className="sucursal-card-name">{sucursal.name}</h4>
+                                                </div>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Step 2: Service Selection */}
+                            {currentStep === 2 && (
                                 <div className="form-step active">
                                     <h3 className="form-step-title">Seleccioná un servicio</h3>
                                     <div className="service-selection-grid">
@@ -275,8 +357,8 @@ Espero confirmación. Gracias! 🙌`
                                 </div>
                             )}
 
-                            {/* Step 2: Date & Time */}
-                            {currentStep === 2 && (
+                            {/* Step 3: Date & Time */}
+                            {currentStep === 3 && (
                                 <div className="form-step active">
                                     <h3 className="form-step-title">Elegí fecha y horario</h3>
                                     <div className="datetime-container">
@@ -389,8 +471,8 @@ Espero confirmación. Gracias! 🙌`
                                 </div>
                             )}
 
-                            {/* Step 3: Personal Data */}
-                            {currentStep === 3 && (
+                            {/* Step 4: Personal Data */}
+                            {currentStep === 4 && (
                                 <div className="form-step active">
                                     <h3 className="form-step-title">Tus datos</h3>
                                     <div className="form-grid">
@@ -414,8 +496,8 @@ Espero confirmación. Gracias! 🙌`
                                 </div>
                             )}
 
-                            {/* Step 4: Confirmation */}
-                            {currentStep === 4 && (
+                            {/* Step 5: Confirmation */}
+                            {currentStep === 5 && (
                                 <div className="form-step active">
                                     <h3 className="form-step-title">Confirmá tu turno</h3>
                                     <div className="booking-summary">
@@ -425,6 +507,7 @@ Espero confirmación. Gracias! 🙌`
                                                 <h4>Resumen de Reserva</h4>
                                             </div>
                                             <div className="summary-content">
+                                                <div className="summary-row"><span className="summary-label">Sucursal:</span><span className="summary-value">{SUCURSALES.find(s => s.id === selectedSucursal)?.name}</span></div>
                                                 <div className="summary-row"><span className="summary-label">Servicio:</span><span className="summary-value">{services.find(s => s.id === selectedService)?.name}</span></div>
                                                 <div className="summary-row"><span className="summary-label">Fecha:</span><span className="summary-value">{formatDate(selectedDate)}</span></div>
                                                 <div className="summary-row"><span className="summary-label">Horario:</span><span className="summary-value">{selectedTime}</span></div>
@@ -444,7 +527,7 @@ Espero confirmación. Gracias! 🙌`
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
                                     Anterior
                                 </button>
-                                {currentStep < 4 ? (
+                                {currentStep < totalSteps ? (
                                     <button type="button" className="nav-btn next-btn" onClick={handleNext}>
                                         Siguiente
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
@@ -469,7 +552,7 @@ Espero confirmación. Gracias! 🙌`
                         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
                     </div>
                     <h3>¡Mensaje Enviado!</h3>
-                    <p>Tu solicitud fue enviada por WhatsApp. Te esperamos en GQ Barbería.</p>
+                    <p>Tu solicitud fue enviada por WhatsApp. Te esperamos en Mónaco Barber Studio.</p>
                     <Link to="/" className="modal-close-btn">Volver al inicio</Link>
                 </div>
             </div>

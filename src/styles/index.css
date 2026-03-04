@@ -1,19 +1,20 @@
-/* GQ Barbería - Premium Styles */
+/* Mónaco Barber Studio - Premium Styles */
 :root {
-    --primary: #C9A227;
-    --primary-light: #DEB94D;
-    --bg-dark: #0D0D0D;
-    --bg-darker: #090909;
-    --bg-card: #151515;
+    --primary: #FFFFFF;
+    --primary-light: #E0E0E0;
+    --primary-dark: #CCCCCC;
+    --bg-dark: #0A0A0A;
+    --bg-darker: #060606;
+    --bg-card: #121212;
     --text-primary: #FFFFFF;
-    --text-secondary: #B3B3B3;
-    --text-muted: #666666;
-    --border-color: rgba(201, 162, 39, 0.2);
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --gradient-gold: linear-gradient(135deg, #C9A227 0%, #F0D060 50%, #C9A227 100%);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
-    --shadow-gold: 0 8px 32px rgba(201, 162, 39, 0.2);
+    --text-secondary: #A0A0A0;
+    --text-muted: #5A5A5A;
+    --border-color: rgba(255, 255, 255, 0.15);
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --gradient-gold: linear-gradient(135deg, #FFFFFF 0%, #D0D0D0 50%, #FFFFFF 100%);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --shadow-gold: 0 8px 32px rgba(255, 255, 255, 0.08);
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --section-padding: clamp(60px, 10vw, 120px);
@@ -72,7 +73,7 @@ ul {
 }
 
 .gold {
-    background: var(--gradient-gold);
+    background: linear-gradient(135deg, #CCCCCC 0%, #FFFFFF 50%, #AAAAAA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -220,7 +221,7 @@ ul {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -231,7 +232,7 @@ ul {
     right: 0;
     width: 60%;
     height: 100%;
-    background: radial-gradient(ellipse at 70% 30%, rgba(201, 162, 39, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 70% 30%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -247,7 +248,7 @@ ul {
     align-items: center;
     gap: 8px;
     padding: 10px 20px;
-    background: rgba(201, 162, 39, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-color);
     border-radius: 50px;
     font-size: 0.85rem;
@@ -413,7 +414,7 @@ ul {
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    background: rgba(201, 162, 39, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-color);
     border-radius: 50px;
     font-size: 0.8rem;
@@ -521,7 +522,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(201, 162, 39, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     color: var(--primary);
     flex-shrink: 0;
@@ -583,7 +584,7 @@ ul {
 
 .service-card.featured {
     border-color: var(--primary);
-    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201, 162, 39, 0.05) 100%);
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 255, 255, 0.03) 100%);
 }
 
 .featured-badge {
@@ -605,7 +606,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(201, 162, 39, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     margin-bottom: 24px;
     color: var(--primary);
@@ -802,7 +803,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(201, 162, 39, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     color: var(--primary);
     flex-shrink: 0;
@@ -861,7 +862,7 @@ ul {
 /* CTA Banner */
 .cta-banner {
     padding: 80px 0;
-    background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, var(--bg-dark) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, var(--bg-dark) 100%);
     position: relative;
 }
 
@@ -989,7 +990,7 @@ ul {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
 }
 
 .form-group input::placeholder,
@@ -1123,7 +1124,7 @@ ul {
 
 .booking-float:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(201, 162, 39, 0.4);
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.15);
 }
 
 /* Back Link */
@@ -1222,7 +1223,7 @@ ul {
 .step.active .step-number {
     border-color: var(--primary);
     color: var(--primary);
-    box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
 }
 
 .step-text {
@@ -1284,7 +1285,7 @@ ul {
 
 .service-option input:checked+.option-content {
     border-color: var(--primary);
-    background: rgba(201, 162, 39, 0.08);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .option-content:hover {
@@ -1516,7 +1517,7 @@ ul {
     align-items: center;
     gap: 12px;
     padding: 24px;
-    background: rgba(201, 162, 39, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -1705,7 +1706,7 @@ ul {
     align-items: center;
     gap: 10px;
     padding: 12px 24px;
-    background: rgba(201, 162, 39, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-color);
     border-radius: 50px;
     color: var(--primary);
@@ -1751,7 +1752,7 @@ ul {
 
 .service-card-option input:checked+.service-card-content {
     border-color: var(--primary);
-    background: rgba(201, 162, 39, 0.08);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .service-card-content:hover {
@@ -1884,7 +1885,7 @@ ul {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
     transition: left 0.5s ease;
 }
 
@@ -1894,7 +1895,7 @@ ul {
 
 .time-slot:hover:not(.selected) {
     border-color: var(--primary);
-    background: rgba(201, 162, 39, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     transform: scale(1.02);
 }
 
@@ -1903,7 +1904,7 @@ ul {
     border-color: var(--primary);
     color: var(--bg-dark);
     transform: scale(1.05);
-    box-shadow: 0 4px 16px rgba(201, 162, 39, 0.3);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.12);
 }
 
 /* Calendar day overrides - keep only selected state golden */
@@ -1947,8 +1948,236 @@ ul {
     }
 
     50% {
-        box-shadow: 0 4px 30px rgba(201, 162, 39, 0.5);
+        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.18);
     }
+}
+
+/* Team Section */
+.team-section {
+    padding: var(--section-padding) 0;
+    background: var(--bg-darker);
+    position: relative;
+}
+
+.team-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    transition: var(--transition-normal);
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-md);
+}
+
+.team-avatar {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.team-name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.team-role {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.team-specialty {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Sucursal Headers */
+.sucursal-header {
+    margin-bottom: 32px;
+}
+
+.sucursal-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.sucursal-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stars {
+    display: flex;
+    gap: 2px;
+    color: var(--primary);
+}
+
+.rating-value {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.sucursal-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.whatsapp-sucursal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: #25D366;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 50px;
+    transition: var(--transition-normal);
+}
+
+.whatsapp-sucursal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
+    color: white;
+}
+
+.location-second {
+    margin-top: 80px;
+    padding-top: 80px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+/* Sucursal Selection Grid (Booking) */
+.sucursal-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.sucursal-card-option {
+    cursor: pointer;
+}
+
+.sucursal-card-option input {
+    display: none;
+}
+
+.sucursal-card-content {
+    padding: 32px 24px;
+    background: var(--bg-darker);
+    border: 2px solid var(--border-subtle);
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.sucursal-card-option input:checked+.sucursal-card-content {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.sucursal-card-content:hover {
+    border-color: var(--border-color);
+}
+
+.sucursal-card-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: var(--primary);
+}
+
+.sucursal-card-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Contact Sucursales Info */
+.contact-sucursales-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.contact-sucursal-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+}
+
+.contact-sucursal-item strong {
+    font-family: var(--font-display);
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.contact-sucursal-item span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.contact-sucursal-item a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.contact-sucursal-item a:hover {
+    color: var(--primary);
 }
 
 /* ==========================================
@@ -1999,7 +2228,7 @@ ul {
 
     .nav-link:hover,
     .nav-link.active {
-        background: rgba(201, 162, 39, 0.1);
+        background: rgba(255, 255, 255, 0.05);
         border-color: var(--border-color);
     }
 
@@ -2092,6 +2321,28 @@ ul {
     .about-highlights {
         max-width: 100%;
         margin: 32px auto;
+    }
+
+    /* Team grid */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    /* Sucursal actions */
+    .sucursal-actions {
+        justify-content: center;
+    }
+
+    .location-second {
+        margin-top: 60px;
+        padding-top: 60px;
+    }
+
+    /* Contact sucursales */
+    .contact-sucursales-info {
+        max-width: 100%;
+        margin: 0 auto 28px;
     }
 
     /* Location & Contact */
@@ -2369,6 +2620,55 @@ ul {
         padding: 20px;
     }
 
+    /* Team grid tablet */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .team-card {
+        padding: 24px 16px;
+    }
+
+    .team-avatar {
+        width: 64px;
+        height: 64px;
+    }
+
+    .team-avatar svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Sucursal selection booking */
+    .sucursal-selection-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .sucursal-card-content {
+        padding: 24px 20px;
+    }
+
+    /* Sucursal header */
+    .sucursal-name {
+        font-size: 1.3rem;
+    }
+
+    .sucursal-rating {
+        justify-content: center;
+    }
+
+    .sucursal-actions {
+        flex-direction: column;
+    }
+
+    .whatsapp-sucursal-btn,
+    .directions-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
     /* Gallery - 2 column compact grid for mobile */
     .gallery-grid,
     .gallery-grid.four-items {
@@ -2489,6 +2789,33 @@ ul {
     .hero-buttons {
         flex-direction: column;
         gap: 12px;
+    }
+
+    /* Team grid mobile */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .team-card {
+        padding: 20px 12px;
+    }
+
+    .team-name {
+        font-size: 0.95rem;
+    }
+
+    .team-role {
+        font-size: 0.75rem;
+    }
+
+    .team-specialty {
+        font-size: 0.7rem;
+    }
+
+    .location-second {
+        margin-top: 48px;
+        padding-top: 48px;
     }
 
     .primary-btn,
@@ -3067,7 +3394,7 @@ ul {
     }
 
     .time-slot:active:not(.selected) {
-        background: rgba(201, 162, 39, 0.1);
+        background: rgba(255, 255, 255, 0.05);
     }
 
     .primary-btn:active,

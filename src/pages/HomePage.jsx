@@ -63,7 +63,7 @@ export default function HomePage() {
                 </div>
                 <div className="hero-image-container">
                     <div className="hero-image-wrapper">
-                        <img src="/assets/hero-barber.png" alt="Barbería GQ Interior" className="hero-image" />
+                        <img src="/assets/exterior-monaco.jpg" alt="Barbería GQ Interior" className="hero-image" />
                         <div className="floating-card card-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" /></svg>
                             <span>Ambiente Cómodo</span>
@@ -81,7 +81,7 @@ export default function HomePage() {
                 <div className="container">
                     <div className="about-content">
                         <div className="about-image">
-                            <img src="/assets/gastonquiroga.jpg" alt="Gastón Quiroga - Barbero Profesional" />
+                            <img src="/assets/corte-monaco.webp" alt="Gastón Quiroga - Barbero Profesional" />
                             <div className="about-badge">
                                 <span className="badge-name">Gastón Quiroga</span>
                                 <span className="badge-role">Barbero Profesional</span>
@@ -156,10 +156,10 @@ export default function HomePage() {
                         <h2 className="section-title">Galería de <span className="gold">Estilos</span></h2>
                     </div>
                     <div className="gallery-grid four-items">
-                        <div className="gallery-item large"><img src="/assets/mohicano.jpg" alt="Mohicano Fade" /><div className="gallery-overlay"><span>Mohicano Fade</span></div></div>
-                        <div className="gallery-item"><img src="/assets/midmullet.jpg" alt="Mid Mullet" /><div className="gallery-overlay"><span>Mid Mullet</span></div></div>
-                        <div className="gallery-item"><img src="/assets/lowtupperfade.jpg" alt="Low Taper Fade" /><div className="gallery-overlay"><span>Low Taper Fade</span></div></div>
-                        <div className="gallery-item"><img src="/assets/highfade.jpg" alt="High Fade" /><div className="gallery-overlay"><span>High Fade</span></div></div>
+                        <div className="gallery-item large"><img src="/assets/monaco-sillones.webp" alt="Interior Barbería" /><div className="gallery-overlay"><span>Interior Barbería</span></div></div>
+                        <div className="gallery-item"><img src="/assets/corte2-monaco.webp" alt="Corte Profesional" /><div className="gallery-overlay"><span>Corte Profesional</span></div></div>
+                        <div className="gallery-item"><img src="/assets/cortes-monaco.jpg" alt="Estilos" /><div className="gallery-overlay"><span>Estilos</span></div></div>
+                        <div className="gallery-item"><img src="/assets/exterior2-monaco.jpg" alt="Exterior Barbería" /><div className="gallery-overlay"><span>Exterior Barbería</span></div></div>
                     </div>
                 </div>
             </section>

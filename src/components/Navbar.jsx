@@ -25,7 +25,6 @@ export default function Navbar({ isBookingPage = false }) {
             <nav className="navbar scrolled">
                 <div className="nav-container">
                     <Link to="/" className="logo">
-                        <img src="/assets/logo.png" alt="GQ Barbería Logo" className="logo-img" />
                         <span className="logo-text">GQ<span className="gold">Barbería</span></span>
                     </Link>
                     <Link to="/" className="back-link">
@@ -41,7 +40,6 @@ export default function Navbar({ isBookingPage = false }) {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="nav-container">
                 <Link to="/" className="logo">
-                    <img src="/assets/logo.png" alt="GQ Barbería Logo" className="logo-img" />
                     <span className="logo-text">GQ<span className="gold">Barbería</span></span>
                 </Link>
                 <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>

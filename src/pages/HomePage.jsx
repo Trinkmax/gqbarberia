@@ -83,54 +83,79 @@ export default function HomePage() {
 
             {/* Hero Section */}
             <section className="hero" id="inicio">
+                <div className="hero-bg">
+                    <img src="/assets/exterior-monaco.webp" alt="Mónaco Barber Studio" className="hero-bg-img" />
+                </div>
                 <div className="hero-overlay"></div>
                 <div className="hero-content">
-                    <div className="hero-badge">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                        2 Sucursales en Córdoba
-                    </div>
-                    <h1 className="hero-title">
-                        <span className="line">Mónaco</span>
-                        <span className="line">Barber <span className="gold">Studio</span></span>
-                    </h1>
-                    <p className="hero-subtitle">
-                        La experiencia de barbería premium que merecés. 6 barberos profesionales,
-                        dos sucursales en Córdoba y un ambiente donde cada detalle está pensado para vos.
-                    </p>
-                    <div className="hero-buttons">
-                        <Link to="/reservar" className="primary-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
-                            Reservar Turno
-                        </Link>
-                        <button className="secondary-btn" onClick={() => scrollToSection('servicios')}>Ver Servicios</button>
-                    </div>
-                    <div className="hero-features">
-                        <div className="feature">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                            <span>2 Sucursales</span>
+                    <div className="hero-inner">
+                        <div className="hero-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            Barbería Premium en Córdoba
                         </div>
-                        <div className="feature">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
-                            <span>6 Barberos</span>
-                        </div>
-                        <div className="feature">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
-                            <span>Hasta las 21 hs</span>
+                        <h1 className="hero-title">
+                            <span className="line hero-anim-1">Mónaco</span>
+                            <span className="line hero-anim-2">Barber <span className="gold">Studio</span></span>
+                        </h1>
+                        <p className="hero-subtitle hero-anim-3">
+                            La experiencia de barbería premium que merecés. 6 barberos profesionales,
+                            dos sucursales en Córdoba y un ambiente donde cada detalle está pensado para vos.
+                        </p>
+                        <div className="hero-buttons hero-anim-4">
+                            <Link to="/reservar" className="primary-btn hero-primary-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                                Reservar Turno
+                            </Link>
+                            <button className="secondary-btn hero-secondary-btn" onClick={() => scrollToSection('servicios')}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9" /></svg>
+                                Ver Servicios
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div className="hero-image-container">
-                    <div className="hero-image-wrapper">
-                        <img src="/assets/exterior-monaco.jpg" alt="Mónaco Barber Studio Interior" className="hero-image" />
-                        <div className="floating-card card-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <span>5 ★ en Google</span>
+                <div className="hero-stats hero-anim-5">
+                    <div className="hero-stat">
+                        <div className="hero-stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                         </div>
-                        <div className="floating-card card-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" /></svg>
-                            <span>Calidad Garantizada</span>
+                        <div className="hero-stat-text">
+                            <span className="hero-stat-value">2</span>
+                            <span className="hero-stat-label">Sucursales</span>
                         </div>
                     </div>
+                    <div className="hero-stat-divider"></div>
+                    <div className="hero-stat">
+                        <div className="hero-stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                        </div>
+                        <div className="hero-stat-text">
+                            <span className="hero-stat-value">6</span>
+                            <span className="hero-stat-label">Barberos</span>
+                        </div>
+                    </div>
+                    <div className="hero-stat-divider"></div>
+                    <div className="hero-stat">
+                        <div className="hero-stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                        </div>
+                        <div className="hero-stat-text">
+                            <span className="hero-stat-value">5.0</span>
+                            <span className="hero-stat-label">en Google</span>
+                        </div>
+                    </div>
+                    <div className="hero-stat-divider"></div>
+                    <div className="hero-stat">
+                        <div className="hero-stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                        </div>
+                        <div className="hero-stat-text">
+                            <span className="hero-stat-value">10–21</span>
+                            <span className="hero-stat-label">Horario</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="hero-scroll-indicator">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9" /></svg>
                 </div>
             </section>
 
@@ -237,7 +262,7 @@ export default function HomePage() {
                         <h2 className="section-title">Galería de <span className="gold">Estilos</span></h2>
                     </div>
                     <div className="gallery-grid four-items">
-                        <div className="gallery-item large"><img src="/assets/monaco-sillones.webp" alt="Interior Barbería" /><div className="gallery-overlay"><span>Interior Barbería</span></div></div>
+                        <div className="gallery-item large"><img src="/assets/barberia_llena.webp" alt="Interior Barbería" /><div className="gallery-overlay"><span>Interior Barbería</span></div></div>
                         <div className="gallery-item"><img src="/assets/corte2-monaco.webp" alt="Corte Profesional" /><div className="gallery-overlay"><span>Corte Profesional</span></div></div>
                         <div className="gallery-item"><img src="/assets/sillones-monaco.webp" alt="Interior" /><div className="gallery-overlay"><span>Interior</span></div></div>
                         <div className="gallery-item"><img src="/assets/exterior-monaco.webp" alt="Exterior Barbería" /><div className="gallery-overlay"><span>Exterior Barbería</span></div></div>

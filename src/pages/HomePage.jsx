@@ -121,11 +121,7 @@ export default function HomePage() {
                 </div>
                 <div className="hero-image-container">
                     <div className="hero-image-wrapper">
-<<<<<<< HEAD
-                        <img src="/assets/exterior-monaco.jpg" alt="Barbería GQ Interior" className="hero-image" />
-=======
-                        <img src="/assets/hero-barber.png" alt="Mónaco Barber Studio Interior" className="hero-image" />
->>>>>>> 13483d8fc511f34a5c0db3a226e45ccc6e734d9b
+<img src="/assets/exterior-monaco.jpg" alt="Mónaco Barber Studio Interior" className="hero-image" />
                         <div className="floating-card card-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
                             <span>5 ★ en Google</span>
@@ -143,11 +139,7 @@ export default function HomePage() {
                 <div className="container">
                     <div className="about-content">
                         <div className="about-image">
-<<<<<<< HEAD
-                            <img src="/assets/corte-monaco.webp" alt="Gastón Quiroga - Barbero Profesional" />
-=======
-                            <img src="/assets/hero-barber.png" alt="Mónaco Barber Studio - Equipo Profesional" />
->>>>>>> 13483d8fc511f34a5c0db3a226e45ccc6e734d9b
+<img src="/assets/corte-monaco.webp" alt="Mónaco Barber Studio - Equipo Profesional" />
                             <div className="about-badge">
                                 <span className="badge-name">Mónaco</span>
                                 <span className="badge-role">Barber Studio</span>

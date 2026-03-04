@@ -23,12 +23,7 @@ export default function Navbar({ isBookingPage = false }) {
             <nav className="navbar scrolled">
                 <div className="nav-container">
                     <Link to="/" className="logo">
-<<<<<<< HEAD
-                        <span className="logo-text">GQ<span className="gold">Barbería</span></span>
-=======
-                        <img src="/assets/logo.png" alt="Mónaco Barber Studio Logo" className="logo-img" />
                         <span className="logo-text">Mónaco<span className="gold">Studio</span></span>
->>>>>>> 13483d8fc511f34a5c0db3a226e45ccc6e734d9b
                     </Link>
                     <Link to="/" className="back-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
@@ -43,12 +38,7 @@ export default function Navbar({ isBookingPage = false }) {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="nav-container">
                 <Link to="/" className="logo">
-<<<<<<< HEAD
-                    <span className="logo-text">GQ<span className="gold">Barbería</span></span>
-=======
-                    <img src="/assets/logo.png" alt="Mónaco Barber Studio Logo" className="logo-img" />
                     <span className="logo-text">Mónaco<span className="gold">Studio</span></span>
->>>>>>> 13483d8fc511f34a5c0db3a226e45ccc6e734d9b
                 </Link>
                 <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
                     <li><a href="#inicio" className="nav-link active" onClick={() => scrollToSection('inicio')}>Inicio</a></li>

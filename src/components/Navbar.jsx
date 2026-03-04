@@ -23,6 +23,7 @@ export default function Navbar({ isBookingPage = false }) {
             <nav className="navbar scrolled">
                 <div className="nav-container">
                     <Link to="/" className="logo">
+                        <img src="/assets/Monaco_Logo.jpg" alt="Mónaco" className="logo-img" />
                         <span className="logo-text">Mónaco<span className="gold">Studio</span></span>
                     </Link>
                     <Link to="/" className="back-link">
@@ -38,6 +39,7 @@ export default function Navbar({ isBookingPage = false }) {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="nav-container">
                 <Link to="/" className="logo">
+                    <img src="/assets/Monaco_Logo.jpg" alt="Mónaco" className="logo-img" />
                     <span className="logo-text">Mónaco<span className="gold">Studio</span></span>
                 </Link>
                 <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>

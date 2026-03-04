@@ -305,7 +305,7 @@ export default function AdminPage() {
             <header className="admin-header">
                 <div className="admin-header-top">
                     <div className="admin-header-brand">
-                        <img src="/logopng3.png" alt="Mónaco" className="admin-logo" />
+                        <img src="/assets/Monaco_Logo.jpg" alt="Mónaco" className="admin-logo" />
                         <div>
                             <h1 className="admin-title">Panel Barbero</h1>
                             <p className="admin-subtitle">{getToday()}</p>

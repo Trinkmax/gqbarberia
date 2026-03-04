@@ -139,7 +139,7 @@ export default function HomePage() {
                 <div className="container">
                     <div className="about-content">
                         <div className="about-image">
-<img src="/assets/corte-monaco.webp" alt="Mónaco Barber Studio - Equipo Profesional" />
+<img src="/assets/sillones-monaco.webp" alt="Mónaco Barber Studio - Interior" />
                             <div className="about-badge">
                                 <span className="badge-name">Mónaco</span>
                                 <span className="badge-role">Barber Studio</span>
@@ -239,8 +239,8 @@ export default function HomePage() {
                     <div className="gallery-grid four-items">
                         <div className="gallery-item large"><img src="/assets/monaco-sillones.webp" alt="Interior Barbería" /><div className="gallery-overlay"><span>Interior Barbería</span></div></div>
                         <div className="gallery-item"><img src="/assets/corte2-monaco.webp" alt="Corte Profesional" /><div className="gallery-overlay"><span>Corte Profesional</span></div></div>
-                        <div className="gallery-item"><img src="/assets/cortes-monaco.jpg" alt="Estilos" /><div className="gallery-overlay"><span>Estilos</span></div></div>
-                        <div className="gallery-item"><img src="/assets/exterior2-monaco.jpg" alt="Exterior Barbería" /><div className="gallery-overlay"><span>Exterior Barbería</span></div></div>
+                        <div className="gallery-item"><img src="/assets/sillones-monaco.webp" alt="Interior" /><div className="gallery-overlay"><span>Interior</span></div></div>
+                        <div className="gallery-item"><img src="/assets/exterior-monaco.webp" alt="Exterior Barbería" /><div className="gallery-overlay"><span>Exterior Barbería</span></div></div>
                     </div>
                 </div>
             </section>
